@@ -8,6 +8,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtGui import QPixmap, QImage, QColor
 from random import randint
 
@@ -17,6 +18,11 @@ class Ui_MainWindow(object):
         MainWindow.resize(891, 700)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
+        self.button = QtWidgets.QPushButton(self.centralwidget)
+        self.button.setGeometry(QtCore.QRect(741, 20, 150, 30))
+        self.button.setText("Move")
+        self.button.setObjectName("Button")
+        self.button.clicked.connect(on_click(self.label11))
         self.frame = QtWidgets.QFrame(self.centralwidget)
         self.frame.setGeometry(QtCore.QRect(140, 20, 600, 600))
         self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -108,6 +114,12 @@ class Ui_MainWindow(object):
         pixmap.fill(QColor(randint(0, 256), randint(0, 256), randint(0, 256), randint(0, 256)))
 
         return pixmap
+
+@pyqtSlot()
+def on_click(self, widget):
+    widget.move(5,0)
+    #button.move(100, 70)
+    print('PyQt5 button click')
 
 
 if __name__ == "__main__":
