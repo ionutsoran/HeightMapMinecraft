@@ -22,7 +22,7 @@ class Ui_MainWindow(object):
         self.button.setGeometry(QtCore.QRect(741, 20, 150, 30))
         self.button.setText("Move")
         self.button.setObjectName("Button")
-        self.button.clicked.connect(on_click(self.label11))
+
         self.frame = QtWidgets.QFrame(self.centralwidget)
         self.frame.setGeometry(QtCore.QRect(140, 20, 600, 600))
         self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -35,6 +35,7 @@ class Ui_MainWindow(object):
         self.label11.setFrameStyle(QtWidgets.QFrame.NoFrame)
         self.label11.setPixmap(self.FillImageFrame())
         self.label11.setObjectName("label11")
+        self.button.clicked.connect(on_click)
         self.label12 = QtWidgets.QLabel(self.frame)
         self.label12.setGeometry(QtCore.QRect(300, 0, 300, 300))
         self.label12.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -116,8 +117,8 @@ class Ui_MainWindow(object):
         return pixmap
 
 @pyqtSlot()
-def on_click(self, widget):
-    widget.move(5,0)
+def on_click(widget):
+    widget.move(5, 0)
     #button.move(100, 70)
     print('PyQt5 button click')
 
